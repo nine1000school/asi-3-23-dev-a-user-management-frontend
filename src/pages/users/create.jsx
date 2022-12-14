@@ -7,7 +7,7 @@ import { useCallback } from "react"
 const CreateUserPage = () => {
   const handleSubmit = useCallback(
     async ({ firstName, lastName, email, birthDate }, { resetForm }) => {
-      const { data } = await axios.post(apiRoutes.users.create(), {
+      await axios.post(apiRoutes.users.create(), {
         firstName,
         lastName,
         email,
@@ -20,7 +20,7 @@ const CreateUserPage = () => {
   )
 
   return (
-    <Page>
+    <Page title="Create a user">
       <UserForm onSubmit={handleSubmit} />
     </Page>
   )

@@ -22,12 +22,12 @@ const NavLink = (props) => {
 }
 
 const Page = (props) => {
-  const { title = "User Management", children, className } = props
+  const { title, children, className } = props
 
   return (
     <main className="flex flex-col">
       <Head>
-        <title>{title} | User Management</title>
+        <title>{`${title ?? "User Management"} | User Management`}</title>
       </Head>
       <header className="flex p-4 border-b sticky items-center justify-between">
         <h1 className="font-bold text-2xl">User Management</h1>
