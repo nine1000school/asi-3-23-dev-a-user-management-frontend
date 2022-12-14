@@ -11,7 +11,7 @@ const validationSchema = yup.object().shape({
   birthDate: yup.string().min(1).required().label("Birth date"),
 })
 
-const initialValues = {
+const defaultInitialValues = {
   firstName: "",
   lastName: "",
   email: "",
@@ -19,7 +19,11 @@ const initialValues = {
 }
 
 const UserForm = (props) => {
-  const { className, ...otherProps } = props
+  const {
+    className,
+    initialValues = defaultInitialValues,
+    ...otherProps
+  } = props
 
   return (
     <Formik
@@ -32,7 +36,7 @@ const UserForm = (props) => {
         <FormField name="lastName" label="Last name" />
         <FormField name="email" label="E-mail" />
         <FormField name="birthDate" type="date" label="Birth date" />
-        <SubmitButton>CREATE</SubmitButton>
+        <SubmitButton>SUBMIT</SubmitButton>
       </Form>
     </Formik>
   )

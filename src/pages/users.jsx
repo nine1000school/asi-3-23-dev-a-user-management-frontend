@@ -1,6 +1,7 @@
 import apiRoutes from "@/apiRoutes.js"
 import UserList from "@/components/business/UserList.jsx"
 import Page from "@/components/Page.jsx"
+import { formatUser } from "@/dataFormatters.js"
 import axios from "axios"
 import { useCallback, useEffect, useState } from "react"
 
@@ -18,9 +19,9 @@ const UsersPage = () => {
         data: { result },
       } = await axios(apiRoutes.users.read.collection())
 
-      setUsers(Object.values(result))
+      setUsers(result.map(formatUser))
     })()
-  })
+  }, [])
 
   return (
     <Page title="List of all users">
