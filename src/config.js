@@ -1,6 +1,6 @@
 const config = {
   api: {
-    baseUrl: "http://localhost:3001",
+    baseURL: process.env.NEXT_PUBLIC_API_BASEURL,
   },
 }
 

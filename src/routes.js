@@ -1,12 +1,16 @@
 const routes = {
-  home: "/",
+  home: () => "/",
   users: {
-    create: "/users/create",
+    create: () => "/users/create",
     read: {
-      collection: "/users",
+      collection: () => "/users",
       single: (userId) => `/users/${userId}`,
     },
     update: (userId) => `/users/${userId}/edit`,
+  },
+  sign: {
+    in: () => "/sign-in",
+    up: () => "/sign-up",
   },
 }
 

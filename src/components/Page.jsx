@@ -1,8 +1,10 @@
+import AppContext from "@/components/AppContext.jsx"
 import Link from "@/components/Link.jsx"
 import routes from "@/routes.js"
 import clsx from "clsx"
 import Head from "next/head.js"
 import { useRouter } from "next/router.js"
+import { useContext } from "react"
 
 const NavLink = (props) => {
   const { className, ...otherProps } = props
@@ -23,6 +25,9 @@ const NavLink = (props) => {
 
 const Page = (props) => {
   const { title, children, className } = props
+  const {
+    state: { session },
+  } = useContext(AppContext)
 
   return (
     <main className="flex flex-col">
@@ -36,9 +41,22 @@ const Page = (props) => {
             <li>
               <NavLink href={routes.home}>Home</NavLink>
             </li>
-            <li>
-              <NavLink href={routes.users.create}>Create</NavLink>
-            </li>
+            {session ? (
+              <>
+                <li>
+                  <NavLink href={routes.users.create}>Create</NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink href={routes.sign.up}>Sign up</NavLink>
+                </li>
+                <li>
+                  <NavLink href={routes.sign.in}>Sign in</NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </header>

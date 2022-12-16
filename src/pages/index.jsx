@@ -1,5 +1,7 @@
-import UsersPage from "@/pages/users.jsx"
+import Page from "@/components/Page.jsx"
 
-const IndexPage = UsersPage
+const IndexPage = () => {
+  return <Page>Welcome~!</Page>
+}
 
 export default IndexPage
